@@ -44,7 +44,7 @@ export default function FloatingRecorder() {
       // 录制 <canvas> 内容（可选采样和图片质量）
       recordCanvas: true,
       sampling: { canvas: 15 },
-      dataURLOptions: { type: 'image/webp', quality: 0.6 }
+      dataURLOptions: { type: 'image/webp', quality: 0.6 },
     });
     stopRef.current = stop ?? null;
     setRecording(true);
@@ -127,6 +127,7 @@ export default function FloatingRecorder() {
 
     // 停止后自动保存
     if (events.length > 0) {
+      // console.log('🚀 ~ stopRecording ~ events-------->', events);
       const createdAt = Date.now();
       const id = `${createdAt}`;
       const name = `录制-${new Date(createdAt).toLocaleString()}`;

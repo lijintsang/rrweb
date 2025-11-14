@@ -81,7 +81,7 @@ instance.defaults.adapter = (async (config: AxiosRequestConfig) => {
         status: 200,
         statusText: 'OK',
         headers: {},
-        config
+        config: config as any
       };
       return resp;
     }
@@ -91,12 +91,12 @@ instance.defaults.adapter = (async (config: AxiosRequestConfig) => {
         status: 500,
         statusText: 'Internal Server Error',
         headers: {},
-        config
+        config: config as any
       };
       return resp;
     }
   }
-  return defaultAdapter(config);
+  return defaultAdapter(config as any);
 }) as AxiosAdapter;
 
 let reqCounter = 0;

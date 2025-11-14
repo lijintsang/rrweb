@@ -61,7 +61,7 @@ export default function Replay() {
   const httpEvents = useMemo(() => {
     if (!active) return [];
     const events = active.events as any[];
-    return events
+    let list =  events
       .filter((e) => e?.data && typeof e.data.tag === 'string')
       .filter((e) =>
         ['http-request', 'http-response', 'http-error'].includes(e.data.tag)
@@ -71,6 +71,8 @@ export default function Replay() {
         payload: e.data.payload || {},
         timestamp: e.timestamp as number,
       }));
+    // console.log('🚀 ~ Replay ~ list-------->', list);
+    return list;
   }, [active]);
 
   useEffect(() => {
